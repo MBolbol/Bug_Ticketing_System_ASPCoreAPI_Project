@@ -1,5 +1,6 @@
 ﻿using BugTicketingSystem.BL.Constants;
 using BugTicketingSystem.BL.Dtos.UserDtos;
+using BugTicketingSystem.DAL.Models;
 using BugTicketingSystem.DAL.UnitOfWork;
 using BugTicketingSystem.Shared;
 using FluentValidation;
@@ -30,12 +31,18 @@ namespace BugTicketingSystem.BL.Validators.UserValidators
             RuleFor(u => u.Role)
                 .NotEmpty()
                 .WithMessage(_localizer[ErrorConstants.ErrorMessages.UserRoleRequired])
-                .WithErrorCode(ErrorConstants.ErrorCodes.UserRoleRequired);
+                .WithErrorCode(ErrorConstants.ErrorCodes.UserRoleRequired)
+                .Must(role => Enum.TryParse<UserRole>(role, true, out _))
+                .WithMessage(_localizer[ErrorConstants.ErrorMessages.InvalidUserRole])
+                .WithErrorCode(ErrorConstants.ErrorCodes.InvalidUserRole);
             RuleFor(u => u.Email)
                 .NotEmpty()
                 .WithMessage(_localizer[ErrorConstants.ErrorMessages.EmailRequired])
                 .WithErrorCode(ErrorConstants.ErrorCodes.EmailRequired)
 
+                .EmailAddress()
+                .WithMessage(_localizer[ErrorConstants.ErrorMessages.InvalidEmailFormat])
+                .WithErrorCode(ErrorConstants.ErrorCodes.InvalidEmailFormat)
                 .MustAsync(CheckEmailIsUnique)
                 .WithMessage(_localizer[ErrorConstants.ErrorMessages.EmailMustBeUnique])
                 .WithErrorCode(ErrorConstants.ErrorCodes.EmailMustBeUnique);

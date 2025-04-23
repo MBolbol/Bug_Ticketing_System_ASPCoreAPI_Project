@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Data;
+﻿using System.Data;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -9,9 +8,6 @@ using BugTicketingSystem.BL.Dtos.UserDtos;
 using BugTicketingSystem.BL.Validators.UserValidators;
 using BugTicketingSystem.DAL.Models;
 using BugTicketingSystem.Shared;
-using FluentValidation;
-using FluentValidation.Results;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;

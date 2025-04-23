@@ -107,9 +107,11 @@ namespace BugTicketingSystem.BL.Managers.UserManager
             {
                 throw new Exception("User not found");
             }
+            var role = Enum.Parse<UserRole>(userUpdateDto.Role, true);
+
             user.Name = userUpdateDto.Name;
             user.Email = userUpdateDto.Email;
-            user.Role = userUpdateDto.Role;
+            user.Role = role;
             _unitOfWork.UserRepo.Update(user);
             await _unitOfWork.SaveChangesAsync();
         }
