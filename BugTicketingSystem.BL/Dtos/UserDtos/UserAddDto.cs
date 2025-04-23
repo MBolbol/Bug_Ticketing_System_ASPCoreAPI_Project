@@ -7,6 +7,6 @@ namespace BugTicketingSystem.BL.Dtos.UserDtos
         public string Name { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;
-        public UserRole Role { get; set; } = UserRole.Developer;
+        public string Role { get; set; } = string.Empty;
     }
 }

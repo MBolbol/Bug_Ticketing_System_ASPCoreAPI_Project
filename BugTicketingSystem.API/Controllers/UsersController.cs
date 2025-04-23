@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Data;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -74,13 +75,14 @@ namespace BugTicketingSystem.API.Controllers
                     }).ToArray()
                 });
             }
-            
+            var role = Enum.Parse<UserRole>(userAddDto.Role, true);
+
             var user = new User()
             {
                 UserName = userAddDto.Name,
                 Email = userAddDto.Email,
                 Name = userAddDto.Name,
-                Role = userAddDto.Role
+                Role = role
             };
             var result = await _userManager.CreateAsync(user, userAddDto.Password);
             if(!result.Succeeded)

@@ -64,12 +64,13 @@ namespace BugTicketingSystem.BL.Managers.UserManager
  
                 };
             }
+            var role = Enum.Parse<UserRole>(userAddDto.Role, true);
             var user = new User
             {
                 
                 Name = userAddDto.Name,
                 Email = userAddDto.Email,
-                Role = userAddDto.Role,
+                Role = role,
                 PasswordHash = userAddDto.Password
 
             };

@@ -1,5 +1,6 @@
 ﻿using BugTicketingSystem.BL.Constants;
 using BugTicketingSystem.BL.Dtos.UserDtos;
+using BugTicketingSystem.DAL.Models;
 using BugTicketingSystem.DAL.UnitOfWork;
 using BugTicketingSystem.Shared;
 using FluentValidation;
@@ -28,10 +29,10 @@ namespace BugTicketingSystem.BL.Validators.UserValidators
                 .WithErrorCode(ErrorConstants.ErrorCodes.NameCannotBeShorterThan3Characters);
 
             RuleFor(u => u.Role)
-                //.NotEmpty()
-                //.WithMessage(_localizer[ErrorConstants.ErrorMessages.UserRoleRequired])
-                //.WithErrorCode(ErrorConstants.ErrorCodes.UserRoleRequired);
-                .IsInEnum()
+                .NotEmpty()
+                .WithMessage(_localizer[ErrorConstants.ErrorMessages.UserRoleRequired])
+                .WithErrorCode(ErrorConstants.ErrorCodes.UserRoleRequired)
+                .Must(role => Enum.TryParse<UserRole>(role, true, out _))
                 .WithMessage(_localizer[ErrorConstants.ErrorMessages.InvalidUserRole])
                 .WithErrorCode(ErrorConstants.ErrorCodes.InvalidUserRole);
             RuleFor(u => u.Email)
