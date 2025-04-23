@@ -23,7 +23,17 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "BugTicketingSystem.BL.Dtos.Common.GeneralResult",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "BugTicketingSystem.API.Controllers.UserBugController",
@@ -223,11 +233,21 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "registerDto",
-        "Type": "BugTicketingSystem.BL.Dtos.AuthDtos.RegisterDto",
+        "Name": "userAddDto",
+        "Type": "BugTicketingSystem.BL.Dtos.UserDtos.UserAddDto",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "BugTicketingSystem.BL.Dtos.Common.GeneralResult",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   }
 ]

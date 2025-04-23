@@ -185,3 +185,4 @@ D:\Iti_9_month_Dot_Net_CRM\ASP.NET\BugTicketingSystemProject\BugTicketingSystem.
 D:\Iti_9_month_Dot_Net_CRM\ASP.NET\BugTicketingSystemProject\BugTicketingSystem.API\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
 D:\Iti_9_month_Dot_Net_CRM\ASP.NET\BugTicketingSystemProject\BugTicketingSystem.API\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\Iti_9_month_Dot_Net_CRM\ASP.NET\BugTicketingSystemProject\BugTicketingSystem.API\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\Iti_9_month_Dot_Net_CRM\ASP.NET\BugTicketingSystemProject\BugTicketingSystem.API\obj\Debug\net9.0\BugTicketingSystem.API.sourcelink.json

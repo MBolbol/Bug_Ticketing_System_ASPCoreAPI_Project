@@ -69,7 +69,9 @@ namespace BugTicketingSystem.BL.Managers.UserManager
                 
                 Name = userAddDto.Name,
                 Email = userAddDto.Email,
-                Role = userAddDto.Role
+                Role = userAddDto.Role,
+                PasswordHash = userAddDto.Password
+
             };
             _unitOfWork.UserRepo.Add(user);
             await _unitOfWork.SaveChangesAsync();

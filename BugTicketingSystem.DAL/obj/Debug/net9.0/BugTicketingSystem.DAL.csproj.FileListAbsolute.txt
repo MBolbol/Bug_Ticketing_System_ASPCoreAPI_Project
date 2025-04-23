@@ -12,3 +12,4 @@ D:\Iti_9_month_Dot_Net_CRM\ASP.NET\BugTicketingSystemProject\BugTicketingSystem.
 D:\Iti_9_month_Dot_Net_CRM\ASP.NET\BugTicketingSystemProject\BugTicketingSystem.DAL\obj\Debug\net9.0\BugTicketingSystem.DAL.pdb
 D:\Iti_9_month_Dot_Net_CRM\ASP.NET\BugTicketingSystemProject\BugTicketingSystem.DAL\obj\Debug\net9.0\BugTicketingSystem.DAL.genruntimeconfig.cache
 D:\Iti_9_month_Dot_Net_CRM\ASP.NET\BugTicketingSystemProject\BugTicketingSystem.DAL\obj\Debug\net9.0\ref\BugTicketingSystem.DAL.dll
+D:\Iti_9_month_Dot_Net_CRM\ASP.NET\BugTicketingSystemProject\BugTicketingSystem.DAL\obj\Debug\net9.0\BugTicketingSystem.DAL.sourcelink.json

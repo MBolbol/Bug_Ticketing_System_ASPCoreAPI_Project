@@ -117,19 +117,46 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Email Can't be empty" xml:space="preserve">
+    <value>الايميل لايمكن ان يكون فارغا</value>
+  </data>
   <data name="Name Can't be empty" xml:space="preserve">
-    <value>لايمكن ان يكون فارغا</value>
+    <value>الاسم لايمكن ان يكون فارغا</value>
   </data>
   <data name="Name must be unique" xml:space="preserve">
     <value>الاسم يجب ان يكون مميز</value>
   </data>
+  <data name="File Name must be unique" xml:space="preserve">
+    <value>اسم الملف يجب ان يكون مميز</value>
+  </data>
+  <data name="Email must be unique" xml:space="preserve">
+    <value>الايميل يجب الا يكون مكرر</value>
+  </data>
   <data name="Name cannot be shorter than 3 characters" xml:space="preserve">
     <value>الاسم يجب الا يقل عن 3 حروف</value>
   </data>
-  <data name="Salary must be between 10000 and 40000" xml:space="preserve">
-    <value>يجب ان يتراوح المرتب بين 10000 و 40000</value>
+  <data name="project Name must be unique" xml:space="preserve">
+    <value>اسم المشروع يجب ان يكون مختلف</value>
   </data>
-  <data name="Name cannot be longer than 20 characters" xml:space="preserve">
-    <value>الاسم يجب الا يزيد عن 20 حرف</value>
+  <data name="File Path Required" xml:space="preserve">
+    <value>مسار الملف مطلوب</value>
+  </data>
+  <data name="User Role Required" xml:space="preserve">
+    <value> دور المستخدم مطلوب</value>
+  </data>
+  <data name="Bug Status Required" xml:space="preserve">
+    <value>حالة الخلل مطلوبة</value>
+  </data>
+  <data name="Password cannot be shorter than 8 characters &amp; Must have special characters" xml:space="preserve">
+    <value>كلمة السر يجب الا تقل عن 8 حروف وتحتوى علي حروف مميزة</value>
+  </data>
+  <data name="Invalid bug status value" xml:space="preserve">
+    <value>قيمة حالة البلاغ غير صالحة</value>
+  </data>
+  <data name="Invalid user role value" xml:space="preserve">
+    <value>دور المستخدم غير صالح</value>
+  </data>
+  <data name="Invalid email format" xml:space="preserve">
+    <value>صيغة البريد الإلكتروني غير صالحة</value>
   </data>
 </root>

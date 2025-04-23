@@ -1,8 +1,10 @@
 ﻿using BugTicketingSystem.BL.Dtos.AttachmentDtos;
 using BugTicketingSystem.BL.Managers.AttachmentManager;
+using BugTicketingSystem.Shared;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 
 namespace BugTicketingSystem.API.Controllers
 {
@@ -12,11 +14,14 @@ namespace BugTicketingSystem.API.Controllers
     {
         private readonly IConfiguration _configuration;
         private readonly IAttachmentManager _attachmentManager;
+        private readonly IStringLocalizer<SharedResources> _localizer;
         public AttachmentsController(IConfiguration configuration,
-            IAttachmentManager attachmentManager)
+            IAttachmentManager attachmentManager,
+            IStringLocalizer<SharedResources> localizer)
         {
             _configuration = configuration;
             _attachmentManager = attachmentManager;
+            _localizer = localizer;
         }
 
         [HttpGet]
@@ -35,9 +40,9 @@ namespace BugTicketingSystem.API.Controllers
 
         [HttpPost]
         public async Task<IActionResult> AddAttachmentToBugAsync(
-    Guid bugId,
-    IFormFile file
-)
+                Guid bugId,
+                IFormFile file
+            )
         {
             try
             {
@@ -66,7 +71,7 @@ namespace BugTicketingSystem.API.Controllers
                     new AttachmentAddDto
                     {
                         FileName = file.FileName,
-                        FilePath = fileUrl 
+                        FilePath = fileUrl
                     }
                 );
 

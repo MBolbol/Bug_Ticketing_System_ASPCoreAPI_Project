@@ -1,9 +1,11 @@
 ﻿using BugTicketingSystem.BL.Dtos.BugDtos;
 using BugTicketingSystem.BL.Dtos.Common;
 using BugTicketingSystem.BL.Managers.BugManager;
+using BugTicketingSystem.Shared;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 
 namespace BugTicketingSystem.API.Controllers
 {
@@ -13,11 +15,15 @@ namespace BugTicketingSystem.API.Controllers
     {
         private readonly IConfiguration _configuration;
         private readonly IBugManager _bugManager;
+        private readonly IStringLocalizer<SharedResources> _localizer;
+
         public BugsController(IConfiguration configuration,
-            IBugManager bugManager)
+            IBugManager bugManager,
+            IStringLocalizer<SharedResources> localizer)
         {
             _configuration = configuration;
             _bugManager = bugManager;
+            _localizer = localizer;
         }
 
         [HttpGet]
@@ -38,17 +44,17 @@ namespace BugTicketingSystem.API.Controllers
             }
             return TypedResults.Ok(project);
         }
-        //[Authorize]
+
         [HttpPost]
-        public async Task<Results<Ok<GeneralResult>, BadRequest<GeneralResult>>> 
+        public async Task<ActionResult<GeneralResult>>
             Add([FromBody] BugAddDto bugAddDto)
         {
             var result = await _bugManager.AddBugAsync(bugAddDto);
             if (result.IsSuccess)
             {
-                return TypedResults.Ok(result);
+                return Ok(result);
             }
-            return TypedResults.BadRequest(result);
+            return BadRequest(result);
         }
     }
 }

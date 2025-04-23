@@ -17,3 +17,4 @@ D:\Iti_9_month_Dot_Net_CRM\ASP.NET\BugTicketingSystemProject\BugTicketingSystem.
 D:\Iti_9_month_Dot_Net_CRM\ASP.NET\BugTicketingSystemProject\BugTicketingSystem.BL\obj\Debug\net9.0\refint\BugTicketingSystem.BL.dll
 D:\Iti_9_month_Dot_Net_CRM\ASP.NET\BugTicketingSystemProject\BugTicketingSystem.BL\obj\Debug\net9.0\BugTicketingSystem.BL.pdb
 D:\Iti_9_month_Dot_Net_CRM\ASP.NET\BugTicketingSystemProject\BugTicketingSystem.BL\obj\Debug\net9.0\ref\BugTicketingSystem.BL.dll
+D:\Iti_9_month_Dot_Net_CRM\ASP.NET\BugTicketingSystemProject\BugTicketingSystem.BL\obj\Debug\net9.0\BugTicketingSystem.BL.sourcelink.json

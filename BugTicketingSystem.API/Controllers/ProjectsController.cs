@@ -2,10 +2,12 @@
 using BugTicketingSystem.BL.Dtos.Common;
 using BugTicketingSystem.BL.Dtos.ProjectDtos;
 using BugTicketingSystem.BL.Managers.ProjectMananger;
+using BugTicketingSystem.Shared;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 
 namespace BugTicketingSystem.API.Controllers
 {
@@ -15,11 +17,15 @@ namespace BugTicketingSystem.API.Controllers
     {
         private readonly IConfiguration _configuration;
         private readonly IProjectManager _projectManager;
+        private readonly IStringLocalizer<SharedResources> _localizer;
+
         public ProjectsController(IConfiguration configuration,
-            IProjectManager projectManager)
+            IProjectManager projectManager,
+            IStringLocalizer<SharedResources> localizer)
         {
             _configuration = configuration;
             _projectManager = projectManager;
+            _localizer = localizer;
         }
 
         [HttpGet]

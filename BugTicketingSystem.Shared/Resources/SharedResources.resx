@@ -117,19 +117,46 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Email Can't be empty" xml:space="preserve">
+    <value>Email Can't be empty</value>
+  </data>
   <data name="Name Can't be empty" xml:space="preserve">
     <value>Name Can't be empty</value>
   </data>
   <data name="Name must be unique" xml:space="preserve">
     <value>Name must be unique</value>
   </data>
+  <data name="File Name must be unique" xml:space="preserve">
+    <value>File Name must be unique</value>
+  </data>
+  <data name="Email must be unique" xml:space="preserve">
+    <value>Email must be unique</value>
+  </data>
   <data name="Name cannot be shorter than 3 characters" xml:space="preserve">
     <value>Name cannot be shorter than 3 characters</value>
   </data>
-  <data name="Salary must be between 10000 and 40000" xml:space="preserve">
-    <value>Salary must be between 10000 and 40000</value>
+  <data name="project Name must be unique" xml:space="preserve">
+    <value>project Name must be unique</value>
   </data>
-  <data name="Name cannot be longer than 20 characters" xml:space="preserve">
-    <value>Name cannot be longer than 20 characters</value>
+  <data name="File Path Required" xml:space="preserve">
+    <value>File Path Required</value>
+  </data>
+  <data name="User Role Required" xml:space="preserve">
+    <value>User Role Required</value>
+  </data>
+  <data name="Bug Status Required" xml:space="preserve">
+    <value>Bug Status Required</value>
+  </data>
+  <data name="Password cannot be shorter than 8 characters &amp; Must have special characters" xml:space="preserve">
+    <value>Password cannot be shorter than 8 characters &amp; Must have special characters</value>
+  </data>
+  <data name="Invalid bug status value" xml:space="preserve">
+    <value>Invalid bug status value</value>
+  </data>
+  <data name="Invalid user role value" xml:space="preserve">
+    <value>Invalid user role value</value>
+  </data>
+  <data name="Invalid email format" xml:space="preserve">
+    <value>Invalid email format</value>
   </data>
 </root>

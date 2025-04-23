@@ -1,6 +1,8 @@
 ﻿using BugTicketingSystem.BL.Managers.BugUserManager;
+using BugTicketingSystem.Shared;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 
 namespace BugTicketingSystem.API.Controllers
 {
@@ -10,10 +12,16 @@ namespace BugTicketingSystem.API.Controllers
     {
         private readonly IConfiguration _configuration;
         private readonly IBugUserManager _bugUserManager;
-        public UserBugController(IConfiguration configuration, IBugUserManager bugUserManager)
+        private readonly IStringLocalizer<SharedResources> _localizer;
+
+        public UserBugController(
+            IConfiguration configuration,
+            IBugUserManager bugUserManager,
+            IStringLocalizer<SharedResources> localizer)
         {
             _configuration = configuration;
             _bugUserManager = bugUserManager;
+            _localizer = localizer;
 
         }
         [HttpPost]

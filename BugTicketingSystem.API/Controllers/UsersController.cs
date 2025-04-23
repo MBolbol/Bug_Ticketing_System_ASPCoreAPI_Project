@@ -1,12 +1,20 @@
-﻿using System.IdentityModel.Tokens.Jwt;
+﻿using System.ComponentModel.DataAnnotations;
+using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using BugTicketingSystem.BL.Dtos.AuthDtos;
+using BugTicketingSystem.BL.Dtos.Common;
+using BugTicketingSystem.BL.Dtos.UserDtos;
+using BugTicketingSystem.BL.Validators.UserValidators;
 using BugTicketingSystem.DAL.Models;
+using BugTicketingSystem.Shared;
+using FluentValidation;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 using Microsoft.IdentityModel.Tokens;
 
 namespace BugTicketingSystem.API.Controllers
@@ -16,13 +24,16 @@ namespace BugTicketingSystem.API.Controllers
     public class UsersController : ControllerBase
     {
         private readonly IConfiguration _configuration;
-        private UserManager<User> _userManager;
+        private readonly UserManager<User> _userManager;
+        private readonly IStringLocalizer<SharedResources> _localizer;
 
         public UsersController(IConfiguration configuration,
-            UserManager<User> userManager)
+            UserManager<User> userManager,
+            IStringLocalizer<SharedResources> localizer)
         {
             _configuration = configuration;
             _userManager = userManager;
+            _localizer = localizer;
         }
         #region Login
         [HttpPost("login")]
@@ -47,21 +58,40 @@ namespace BugTicketingSystem.API.Controllers
         #endregion
         #region Register
         [HttpPost("register")]
-        public async Task<Results<NoContent, BadRequest<List<string>>>>
-            Register([FromBody] RegisterDto registerDto)
+        public async Task<ActionResult<GeneralResult>>
+            Register([FromBody] UserAddDto userAddDto, [FromServices] UserAddValidator validator)
         {
+            var validationResult = await validator.ValidateAsync(userAddDto);
+            if (!validationResult.IsValid)
+            {
+                return BadRequest(new GeneralResult
+                {
+                    IsSuccess = false,
+                    Errors = validationResult.Errors.Select(e => new ResultError
+                    {
+                        Code = e.ErrorCode,
+                        Message = e.ErrorMessage
+                    }).ToArray()
+                });
+            }
+            
             var user = new User()
             {
-                UserName = registerDto.UserName,
-                Email = registerDto.Email,
-                Name = registerDto.UserName,
-                Role = registerDto.Role
+                UserName = userAddDto.Name,
+                Email = userAddDto.Email,
+                Name = userAddDto.Name,
+                Role = userAddDto.Role
             };
-            var result = await _userManager.CreateAsync(user, registerDto.Password);
+            var result = await _userManager.CreateAsync(user, userAddDto.Password);
             if(!result.Succeeded)
             {
-                var errors = result.Errors.Select(e => e.Description).ToList();
-                return TypedResults.BadRequest(errors);
+                var errors = result.Errors.Select(e => new ResultError
+                {
+                    Code = "IDENTITY_ERROR",
+                    Message = _localizer[e.Code] ?? e.Description 
+                }).ToArray();
+
+                return BadRequest(new GeneralResult { IsSuccess = false, Errors = errors });
             }
             var claims = new List<Claim>
             {
@@ -71,7 +101,7 @@ namespace BugTicketingSystem.API.Controllers
                 new Claim(ClaimTypes.Role, user.Role.ToString())
             };
             await _userManager.AddClaimsAsync(user, claims);
-            return TypedResults.NoContent();
+            return Ok(new GeneralResult { IsSuccess = true });
         }
         #endregion
         #region Generate token
@@ -95,5 +125,7 @@ namespace BugTicketingSystem.API.Controllers
             return new TokenDto(ToKenString, token.ValidTo);
         }
         #endregion
+
+        
     }
 }

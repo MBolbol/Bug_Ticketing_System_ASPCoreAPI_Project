@@ -13,6 +13,8 @@ using BugTicketingSystem.BL.Constants;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 using Microsoft.Extensions.FileProviders;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -104,6 +106,22 @@ builder.Services.AddControllers()
     });
 #endregion
 
+#region Localization
+builder.Services.AddLocalization(options => 
+options.ResourcesPath = "Resources");
+builder.Services.Configure<RequestLocalizationOptions>(options =>
+{
+    var supportedCultures = new[]
+    {
+        new CultureInfo("en"),
+        new CultureInfo("ar")
+    };
+    options.DefaultRequestCulture = new RequestCulture("en");
+    options.SupportedCultures = supportedCultures;
+    options.SupportedUICultures = supportedCultures;
+});
+#endregion
+
 #region Cors
 builder.Services.AddCors(options =>
 {
@@ -117,9 +135,13 @@ builder.Services.AddCors(options =>
 });
 
 #endregion
-#endregion
+
+#region Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+#endregion
+
+#endregion
 var app = builder.Build();
 
 #region Seed data on startup
@@ -156,15 +178,22 @@ app.UseCors("AllowAll");
 app.UseExceptionHandler();
 /******************************************************************************/
 #endregion
+
+#region StaticFiles
 app.UseStaticFiles();
 app.UseStaticFiles(new StaticFileOptions
 {
     FileProvider = new PhysicalFileProvider(
         Path.Combine(Directory.GetCurrentDirectory(), "Attachments")),
     RequestPath = "/attachments"
-});
+}); 
+#endregion
+
 app.UseRouting();
 
+#region Localization
+app.UseRequestLocalization();
+#endregion
 
 #region Authentiction&Authorization middleware
 // Authentiction at first

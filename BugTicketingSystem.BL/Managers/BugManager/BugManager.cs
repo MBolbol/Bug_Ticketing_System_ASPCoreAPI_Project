@@ -67,11 +67,13 @@ namespace BugTicketingSystem.BL.Managers.BugManager
 
                 };
             }
+            // Convert string status to enum
+            var bugStatus = Enum.Parse<BugStatus>(bugAddDto.Status, true);
             var bug = new Bug
             {
                 Title = bugAddDto.Title,
                 Description = bugAddDto.Description,
-                Status = bugAddDto.Status,
+                Status = bugStatus,
                 ProjectId = bugAddDto.ProjectId,
             };
             _unitOfWork.BugRepo.Add(bug);
