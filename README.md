@@ -111,10 +111,10 @@ ar for Arabic
 en for English (default)
 🛠 Built With
 ASP.NET Core
-
 Entity Framework Core
-
 JWT Authentication
+
+
 🧑‍💻 Developer
 by Mostafa Bolbol Ramadan
 
